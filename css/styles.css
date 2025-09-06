@@ -80,11 +80,8 @@ p { margin: 0 0 12px; color: var(--text); }
 @media (min-width: 520px) { .locale-grid { grid-template-columns: repeat(4, minmax(0,1fr)); } }
 .locale-tile { background: var(--card); border: 1px solid #e5e7eb; border-radius: 12px; padding: 10px 12px; display: grid; gap: 10px; box-shadow: 0 1px 2px rgba(2,6,23,0.04); }
 .locale-code { font-weight: 600; letter-spacing: 0.01em; }
-.checks { display: flex; gap: 6px; }
-.check { width: 18px; height: 18px; border-radius: 50%; background: var(--success); color: #fff; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; box-shadow: inset 0 -1px 0 rgba(0,0,0,0.05); }
-.check::before { content: "✓"; line-height: 1; }
-.check.warn { background: var(--warn); }
-.check.warn::before { content: "!"; font-weight: 800; }
+.flags { display: flex; gap: 6px; align-items: center; }
+.flag { font-size: 18px; line-height: 1; }
 
 /* Flow layout in hero visual */
 .flow-layout { display: grid; grid-template-columns: 1fr; gap: 12px; }
@@ -95,10 +92,14 @@ p { margin: 0 0 12px; color: var(--text); }
 .spine { width: 2px; height: 100%; margin: 0 auto; background: linear-gradient(to bottom, rgba(10,132,255,0.25), rgba(10,132,255,0.05)); border-radius: 2px; }
 .targets-col { display: grid; gap: 12px; }
 .target-row { display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: center; }
-.connector { position: relative; height: 2px; background: #e5e7eb; border-radius: 2px; }
-.connector::after { content: ""; position: absolute; top: 50%; left: 0; width: 10px; height: 10px; transform: translate(-50%, -50%); border-radius: 50%; background: var(--primary); box-shadow: 0 0 0 4px rgba(10,132,255,0.08); animation: travel 2.4s infinite ease-in-out; }
-@keyframes travel { 0% { left: 0%; } 100% { left: 100%; } }
-@media (prefers-reduced-motion: reduce) { .connector::after { animation: none; } }
+.connector { position: relative; height: 2px; background: #e5e7eb; border-radius: 2px; transform-origin: 0 50%; margin-left: -4px; width: calc(100% + 4px); animation: lineLoop 4s linear infinite; }
+.connector::after { content: ""; position: absolute; top: 50%; left: 0; width: 14px; height: 14px; transform: translate(-50%, -50%); border-radius: 50%; background: var(--primary); box-shadow: 0 0 0 6px rgba(10,132,255,0.10); animation: knobTravel 4s linear infinite; }
+.connector.top { transform: rotate(-8deg); }
+.connector.mid { transform: rotate(0deg); }
+.connector.bottom { transform: rotate(8deg); }
+@keyframes knobTravel { 0% { left: 0%; } 100% { left: 100%; } }
+@keyframes lineLoop { 0% { opacity: 1; } 100% { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .connector::after, .connector { animation: none; } }
 .locale-tile.source { border-color: rgba(10,132,255,0.3); background: #fff; }
 .locale-tile { transition: opacity 220ms ease, transform 220ms ease; }
 .locale-tile.swap { transform: translateY(-1px); opacity: 0.96; }

@@ -64,33 +64,35 @@
   } catch (_) {}
 })();
 
-// Rotate example locales in hero visual
+// Rotate example locales when slider wraps (with emoji flags)
 (function () {
-  const targets = document.querySelectorAll('.targets-col .locale-tile .locale-code');
-  if (!targets.length) return;
+  const codeEls = document.querySelectorAll('.targets-col .locale-tile .locale-code');
+  const flagEls = document.querySelectorAll('.targets-col .locale-tile .flag');
+  const connectors = document.querySelectorAll('.connector');
+  if (!codeEls.length || !flagEls.length || !connectors.length) return;
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const sets = [
-    ['Spanish', 'German', 'Chinese'],
-    ['Ukrainian', 'French', 'Japanese'],
-    ['Portuguese (Brazil)', 'Italian', 'Korean']
+    [ {name: 'Spanish', flag: '🇪🇸'}, {name: 'German', flag: '🇩🇪'}, {name: 'Chinese', flag: '🇨🇳'} ],
+    [ {name: 'Ukrainian', flag: '🇺🇦'}, {name: 'French', flag: '🇫🇷'}, {name: 'Japanese', flag: '🇯🇵'} ],
+    [ {name: 'Portuguese (Brazil)', flag: '🇧🇷'}, {name: 'Italian', flag: '🇮🇹'}, {name: 'Korean', flag: '🇰🇷'} ]
   ];
   let i = 0;
   const apply = () => {
     const list = sets[i % sets.length];
-    targets.forEach((el, idx) => {
-      const tile = el.closest('.locale-tile');
+    codeEls.forEach((code, idx) => {
+      const tile = code.closest('.locale-tile');
+      const flag = flagEls[idx];
       if (tile) tile.classList.add('swap');
-      el.textContent = list[idx] || '';
-      if (tile) {
-        // small micro-interaction
-        setTimeout(() => tile.classList.remove('swap'), 180);
-      }
+      code.textContent = list[idx]?.name || '';
+      if (flag) flag.textContent = list[idx]?.flag || '';
+      if (tile) setTimeout(() => tile.classList.remove('swap'), 180);
     });
     i++;
   };
   apply();
-  const intervalMs = reduce ? 8000 : 4000;
-  setInterval(apply, intervalMs);
+  if (reduce) return; // respect reduced motion
+  const signal = document.querySelector('.connector.mid') || connectors[0];
+  signal.addEventListener('animationiteration', apply);
 })();
 
 // Waitlist form handling (hidden iframe submit + basic validation)
