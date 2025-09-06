@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Auto-populate “What’s New” for App Store Connect</title>
+  <meta name="description" content="One click to fill localized release notes across locales.">
+  <style type="text/css">
+    body { margin:0; font-family: Arial, Helvetica, sans-serif; color:#0c0c0d; background:#fff; }
+    .wrap { max-width: 960px; margin: 0 auto; padding: 40px 20px; }
+    .hero { display: block; }
+    h1 { font-size: 36px; line-height: 1.2; margin: 0 0 10px; }
+    p.lead { color:#6b7280; margin: 0 0 18px; }
+    .card { border:1px solid #e5e7eb; border-radius: 12px; padding: 18px; }
+    .row { margin-bottom: 10px; }
+    label { display:inline-block; min-width:80px; }
+    input[type="email"] { width: 260px; padding: 10px; border:1px solid #cbd5e1; border-radius: 8px; }
+    button { padding: 10px 14px; border:0; border-radius: 8px; background:#0f172a; color:#fff; font-weight:bold; cursor:pointer; }
+    button:hover { opacity:.92; }
+    #msg { margin-left: 10px; color: #0a7c22; font-weight: bold; }
+    .muted { color:#6b7280; font-size: 12px; margin-top: 8px; }
+    .footer { margin-top: 28px; color:#6b7280; font-size:12px; }
+    /* Hide honeypot field off-screen */
+    .hp { position:absolute; left:-5000px; top:auto; width:1px; height:1px; overflow:hidden; }
+  </style>
+
+  <script type="text/javascript">
+    var submitted = false;
+
+    function markSubmitted(){
+      var v = document.getElementById('email').value;
+      // minimal client-side check (server does real validation)
+      if (v.indexOf('@') === -1) {
+        alert('Please enter a valid email.');
+        return false;
+      }
+      submitted = true;
+      return true;
+    }
+
+    // Called when the hidden iframe loads (after submit completes)
+    function done() {
+      if (submitted) {
+        var m = document.getElementById('msg');
+        if (m) m.innerHTML = "Thanks! You're in.";
+        var f = document.getElementById('wl');
+        if (f && f.reset) f.reset();
+        submitted = false;
+      }
+    }
+
+    function setSource() {
+      var s = document.getElementById('source');
+      if (s) s.value = (location.hostname || "") + (location.pathname || "");
+    }
+  </script>
+</head>
+
+<body onload="setSource()">
+  <div class="wrap">
+    <section class="hero">
+      <h1>Auto-populate “What’s New” in every locale</h1>
+      <p class="lead">Bring your App Store Connect API key, paste notes once, and ship localized release notes in seconds.</p>
+    </section>
+
+    <div class="card">
+      <h3 style="margin-top:0;">Join the waitlist</h3>
+
+      <!-- Hidden iframe captures the form response so the page doesn't navigate -->
+      <iframe name="hidden_iframe" style="display:none" onload="done()"></iframe>
+
+      <!-- Replace YOUR_APPS_SCRIPT_WEB_APP_URL with your Apps Script Web App /exec URL -->
+      <form id="wl" action="https://script.google.com/macros/s/AKfycbxgwxw1QjLeDjEchi8pac4RdiWne3xXzkDUGMwf56LLXTIuP0B9yTo4-djwW_j8B8KB/exec" method="post" target="hidden_iframe" onsubmit="return markSubmitted()">
+        <div class="row">
+          <label for="email">Email:</label>
+          <input id="email" name="email" type="email" size="32" maxlength="200" placeholder="you@example.com">
+          <button type="submit">Join</button>
+          <span id="msg"></span>
+        </div>
+
+        <!-- Honeypot (bots often fill this; server ignores if present) -->
+        <div class="hp">
+          <label>Company: <input name="company" type="text"></label>
+        </div>
+
+        <!-- Optional metadata + token -->
+        <input type="hidden" id="source" name="source" value="">
+        <input type="hidden" name="t" value="nfaklnklfdnal_jko!39842mflksda_lk13^">
+      </form>
+
+      <div class="muted">No spam. We’ll only email you about early access & updates.</div>
+    </div>
+
+    <div class="footer">
+      © <script type="text/javascript">document.write((new Date()).getFullYear());</script> productive-lab.com · All rights reserved
+    </div>
+  </div>
+
+  <noscript>
+    <div class="wrap"><p><em>JavaScript is required to submit without leaving this page.</em></p></div>
+  </noscript>
+</body>
+</html>
