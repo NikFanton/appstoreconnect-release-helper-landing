@@ -1,102 +1,214 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
-<html>
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <title>Auto-populate “What’s New” for App Store Connect</title>
-  <meta name="description" content="One click to fill localized release notes across locales.">
-  <style type="text/css">
-    body { margin:0; font-family: Arial, Helvetica, sans-serif; color:#0c0c0d; background:#fff; }
-    .wrap { max-width: 960px; margin: 0 auto; padding: 40px 20px; }
-    .hero { display: block; }
-    h1 { font-size: 36px; line-height: 1.2; margin: 0 0 10px; }
-    p.lead { color:#6b7280; margin: 0 0 18px; }
-    .card { border:1px solid #e5e7eb; border-radius: 12px; padding: 18px; }
-    .row { margin-bottom: 10px; }
-    label { display:inline-block; min-width:80px; }
-    input[type="email"] { width: 260px; padding: 10px; border:1px solid #cbd5e1; border-radius: 8px; }
-    button { padding: 10px 14px; border:0; border-radius: 8px; background:#0f172a; color:#fff; font-weight:bold; cursor:pointer; }
-    button:hover { opacity:.92; }
-    #msg { margin-left: 10px; color: #0a7c22; font-weight: bold; }
-    .muted { color:#6b7280; font-size: 12px; margin-top: 8px; }
-    .footer { margin-top: 28px; color:#6b7280; font-size:12px; }
-    /* Hide honeypot field off-screen */
-    .hp { position:absolute; left:-5000px; top:auto; width:1px; height:1px; overflow:hidden; }
-  </style>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AppStoreConnect Assistant — Auto-populate ‘What’s New’ for App Store Connect</title>
+    <meta name="description" content="One click to fill localized release notes across locales.">
 
-  <script type="text/javascript">
-    var submitted = false;
+    <!-- Open Graph -->
+    <meta property="og:title" content="AppStoreConnect Assistant — Auto-populate ‘What’s New’ for App Store Connect">
+    <meta property="og:site_name" content="Productive lab">
+    <meta property="og:description" content="One click to fill localized release notes across locales.">
+    <meta property="og:type" content="website">
 
-    function markSubmitted(){
-      var v = document.getElementById('email').value;
-      // minimal client-side check (server does real validation)
-      if (v.indexOf('@') === -1) {
-        alert('Please enter a valid email.');
-        return false;
-      }
-      submitted = true;
-      return true;
-    }
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="AppStoreConnect Assistant — Auto-populate ‘What’s New’ for App Store Connect">
+    <meta name="twitter:description" content="One click to fill localized release notes across locales.">
 
-    // Called when the hidden iframe loads (after submit completes)
-    function done() {
-      if (submitted) {
-        var m = document.getElementById('msg');
-        if (m) m.innerHTML = "Thanks! You're in.";
-        var f = document.getElementById('wl');
-        if (f && f.reset) f.reset();
-        submitted = false;
-      }
-    }
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#hero">Skip to content</a>
 
-    function setSource() {
-      var s = document.getElementById('source');
-      if (s) s.value = (location.hostname || "") + (location.pathname || "");
-    }
-  </script>
-</head>
+    <header class="site-header" role="banner">
+      <div class="container header-inner">
+        <a href="#hero" class="brand" aria-label="Productive lab home">Productive lab</a>
+        <nav aria-label="Primary">
+          <a class="btn btn-primary" href="#waitlist">Join waitlist</a>
+        </nav>
+      </div>
+    </header>
 
-<body onload="setSource()">
-  <div class="wrap">
-    <section class="hero">
-      <h1>Auto-populate “What’s New” in every locale</h1>
-      <p class="lead">Bring your App Store Connect API key, paste notes once, and ship localized release notes in seconds.</p>
-    </section>
-
-    <div class="card">
-      <h3 style="margin-top:0;">Join the waitlist</h3>
-
-      <!-- Hidden iframe captures the form response so the page doesn't navigate -->
-      <iframe name="hidden_iframe" style="display:none" onload="done()"></iframe>
-
-      <!-- Replace YOUR_APPS_SCRIPT_WEB_APP_URL with your Apps Script Web App /exec URL -->
-      <form id="wl" action="https://script.google.com/macros/s/AKfycbxgwxw1QjLeDjEchi8pac4RdiWne3xXzkDUGMwf56LLXTIuP0B9yTo4-djwW_j8B8KB/exec" method="post" target="hidden_iframe" onsubmit="return markSubmitted()">
-        <div class="row">
-          <label for="email">Email:</label>
-          <input id="email" name="email" type="email" size="32" maxlength="200" placeholder="you@example.com">
-          <button type="submit">Join</button>
-          <span id="msg"></span>
+    <main id="content" tabindex="-1">
+      <section id="hero" class="hero section" aria-labelledby="hero-title">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <span class="badge" aria-label="Product name">AppStoreConnect Assistant</span>
+            <h1 id="hero-title">Auto-populate ‘What’s New’ in every locale</h1>
+            <p class="subhead">Connect App Store Connect, paste your notes once, and we’ll translate, preview, and publish per-locale release notes for you.</p>
+            <div class="cta-row">
+              <a class="btn btn-primary" href="#waitlist">Join the waitlist</a>
+              <p class="micro-note">No spam—just early access and product updates.</p>
+            </div>
+          </div>
+          <div class="hero-visual" aria-hidden="true">
+            <div class="glow" aria-hidden="true"></div>
+            <div class="ui-card reveal" role="img" aria-label="Locales with published status">
+              <div class="ui-card-header">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+              </div>
+              <div class="locale-grid">
+                <div class="locale-tile">
+                  <div class="locale-code">en-US</div>
+                  <div class="checks" aria-hidden="true">
+                    <span class="check"></span>
+                    <span class="check"></span>
+                    <span class="check"></span>
+                  </div>
+                </div>
+                <div class="locale-tile">
+                  <div class="locale-code">uk</div>
+                  <div class="checks" aria-hidden="true">
+                    <span class="check"></span>
+                    <span class="check"></span>
+                    <span class="check"></span>
+                  </div>
+                </div>
+                <div class="locale-tile">
+                  <div class="locale-code">ru</div>
+                  <div class="checks" aria-hidden="true">
+                    <span class="check"></span>
+                    <span class="check"></span>
+                    <span class="check"></span>
+                  </div>
+                </div>
+                <div class="locale-tile">
+                  <div class="locale-code">es-ES</div>
+                  <div class="checks" aria-hidden="true">
+                    <span class="check"></span>
+                    <span class="check"></span>
+                    <span class="check"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </section>
 
-        <!-- Honeypot (bots often fill this; server ignores if present) -->
-        <div class="hp">
-          <label>Company: <input name="company" type="text"></label>
+      <section id="value" class="section" aria-labelledby="value-title">
+        <div class="container">
+          <h2 id="value-title" class="sr-only">Value</h2>
+          <div class="feature-grid">
+            <article class="feature-card reveal">
+              <div class="icon icon-publish" aria-hidden="true"></div>
+              <h3>One-click publish</h3>
+              <p>Push ‘What’s New’ to all selected locales at once—no more hopping between pages.</p>
+            </article>
+            <article class="feature-card reveal">
+              <div class="icon icon-translate" aria-hidden="true"></div>
+              <h3>Automatic translations</h3>
+              <p>High-quality machine translation with glossary support; override any locale by hand.</p>
+            </article>
+            <article class="feature-card reveal">
+              <div class="icon icon-templates" aria-hidden="true"></div>
+              <h3>Templates &amp; consistency</h3>
+              <p>Save your tone once. Reuse across versions and apps, with per-locale nuance.</p>
+            </article>
+          </div>
         </div>
+      </section>
 
-        <!-- Optional metadata + token -->
-        <input type="hidden" id="source" name="source" value="">
-        <input type="hidden" name="t" value="nfaklnklfdnal_jko!39842mflksda_lk13^">
-      </form>
+      <section id="how" class="section" aria-labelledby="how-title">
+        <div class="container">
+          <h2 id="how-title">How it works</h2>
+          <ol class="steps">
+            <li class="step reveal">
+              <div class="step-num" aria-hidden="true">1</div>
+              <div class="step-body">
+                <h3>Connect</h3>
+                <p>Add your App Store Connect API key (Issuer ID, Key ID, .p8).</p>
+              </div>
+            </li>
+            <li class="step reveal">
+              <div class="step-num" aria-hidden="true">2</div>
+              <div class="step-body">
+                <h3>Compose</h3>
+                <p>Paste your English notes or sync from a changelog.</p>
+              </div>
+            </li>
+            <li class="step reveal">
+              <div class="step-num" aria-hidden="true">3</div>
+              <div class="step-body">
+                <h3>Translate &amp; publish</h3>
+                <p>Auto-translate, preview per locale, then publish to the current version.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
 
-      <div class="muted">No spam. We’ll only email you about early access & updates.</div>
-    </div>
+      <section id="benefits" class="section" aria-labelledby="benefits-title">
+        <div class="container">
+          <h2 id="benefits-title">What you get</h2>
+          <ul class="checklist">
+            <li>All locales at once: en-US, uk, ru, …</li>
+            <li>Per-locale edits without losing the template</li>
+            <li>Previews &amp; diffs before publishing</li>
+            <li>Audit trail of changes</li>
+            <li>Simple integration with App Store Connect—no Xcode required</li>
+          </ul>
+        </div>
+      </section>
 
-    <div class="footer">
-      © <script type="text/javascript">document.write((new Date()).getFullYear());</script> productive-lab.com · All rights reserved
-    </div>
-  </div>
+      <section id="who" class="section" aria-labelledby="who-title">
+        <div class="container">
+          <h2 id="who-title">Who it’s for</h2>
+          <p>Indie devs and teams who ship often and want global release notes without the overhead.</p>
+        </div>
+      </section>
 
-  <noscript>
-    <div class="wrap"><p><em>JavaScript is required to submit without leaving this page.</em></p></div>
-  </noscript>
-</body>
-</html>
+      <section id="faq" class="section" aria-labelledby="faq-title">
+        <div class="container">
+          <h2 id="faq-title">FAQ</h2>
+          <div class="faq-list">
+            <details class="faq-item reveal">
+              <summary>Can I edit translations?</summary>
+              <div class="answer"><p>Yes—every locale can be overridden before publishing.</p></div>
+            </details>
+            <details class="faq-item reveal">
+              <summary>Do you store my Apple keys?</summary>
+              <div class="answer"><p>Keys are encrypted at rest; you can revoke them at any time in App Store Connect.</p></div>
+            </details>
+            <details class="faq-item reveal">
+              <summary>Does it change my app binary or metadata?</summary>
+              <div class="answer"><p>Only the localized ‘What’s New’ field for the selected version.</p></div>
+            </details>
+            <details class="faq-item reveal">
+              <summary>Which locales are supported?</summary>
+              <div class="answer"><p>All locales supported by App Store Connect; you choose which to publish.</p></div>
+            </details>
+            <details class="faq-item reveal">
+              <summary>Can I use my own glossary?</summary>
+              <div class="answer"><p>Yes—add terms to keep brand names and feature names consistent.</p></div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section id="waitlist" class="section" aria-labelledby="waitlist-title">
+        <div class="container">
+          <div class="waitlist-card reveal" role="region" aria-labelledby="waitlist-title">
+            <h2 id="waitlist-title">Join the waitlist</h2>
+            <p class="muted">Early access. Updates only.</p>
+            <!-- PASTE_EXISTING_FORM_HERE -->
+            <div class="form-slot" aria-hidden="true"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer" role="contentinfo">
+      <div class="container footer-inner">
+        <p class="footnote">© 2025 Productive lab · Not affiliated with Apple. App Store Connect is a trademark of Apple Inc. · Contact: <a href="mailto:hello@productive-lab.com">hello@productive-lab.com</a></p>
+        <a class="back-to-top" href="#hero">Back to top</a>
+      </div>
+    </footer>
+
+    <script src="js/app.js" defer></script>
+  </body>
+  </html>
