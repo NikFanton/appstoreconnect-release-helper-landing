@@ -74,7 +74,7 @@
   const sets = [
     [ {name: 'Spanish', flag: '🇪🇸'}, {name: 'German', flag: '🇩🇪'}, {name: 'Chinese', flag: '🇨🇳'} ],
     [ {name: 'Ukrainian', flag: '🇺🇦'}, {name: 'French', flag: '🇫🇷'}, {name: 'Japanese', flag: '🇯🇵'} ],
-    [ {name: 'Portuguese (Brazil)', flag: '🇧🇷'}, {name: 'Italian', flag: '🇮🇹'}, {name: 'Korean', flag: '🇰🇷'} ]
+    [ {name: 'Dutch', flag: '🇳🇱'}, {name: 'Italian', flag: '🇮🇹'}, {name: 'Korean', flag: '🇰🇷'} ]
   ];
   let i = 0;
   const apply = () => {
