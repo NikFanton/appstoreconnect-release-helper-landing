@@ -64,6 +64,35 @@
   } catch (_) {}
 })();
 
+// Rotate example locales in hero visual
+(function () {
+  const targets = document.querySelectorAll('.targets-col .locale-tile .locale-code');
+  if (!targets.length) return;
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const sets = [
+    ['Spanish', 'German', 'Chinese'],
+    ['Ukrainian', 'French', 'Japanese'],
+    ['Portuguese (Brazil)', 'Italian', 'Korean']
+  ];
+  let i = 0;
+  const apply = () => {
+    const list = sets[i % sets.length];
+    targets.forEach((el, idx) => {
+      const tile = el.closest('.locale-tile');
+      if (tile) tile.classList.add('swap');
+      el.textContent = list[idx] || '';
+      if (tile) {
+        // small micro-interaction
+        setTimeout(() => tile.classList.remove('swap'), 180);
+      }
+    });
+    i++;
+  };
+  apply();
+  const intervalMs = reduce ? 8000 : 4000;
+  setInterval(apply, intervalMs);
+})();
+
 // Waitlist form handling (hidden iframe submit + basic validation)
 (function () {
   const form = document.getElementById('wl');

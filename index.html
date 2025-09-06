@@ -86,43 +86,49 @@
           </div>
           <div class="hero-visual" aria-hidden="true">
             <div class="glow" aria-hidden="true"></div>
-            <div class="ui-card reveal" role="img" aria-label="Locales with published status">
+            <div class="ui-card reveal" role="img" aria-label="English (US) flowing to other locales with status">
               <div class="ui-card-header">
                 <span class="dot"></span>
                 <span class="dot"></span>
                 <span class="dot"></span>
               </div>
-              <div class="locale-grid">
-                <div class="locale-tile">
-                  <div class="locale-code">en-US</div>
-                  <div class="checks" aria-hidden="true">
-                    <span class="check"></span>
-                    <span class="check"></span>
-                    <span class="check"></span>
+              <div class="flow-layout">
+                <div class="source-col">
+                  <div class="locale-tile source">
+                    <div class="locale-code">English (US)</div>
+                    <div class="checks" aria-hidden="true">
+                      <span class="check"></span>
+                    </div>
                   </div>
                 </div>
-                <div class="locale-tile">
-                  <div class="locale-code">uk</div>
-                  <div class="checks" aria-hidden="true">
-                    <span class="check"></span>
-                    <span class="check"></span>
-                    <span class="check"></span>
+                <div class="spine-col"><div class="spine" aria-hidden="true"></div></div>
+                <div class="targets-col">
+                  <div class="target-row">
+                    <div class="connector" aria-hidden="true"></div>
+                    <div class="locale-tile">
+                      <div class="locale-code">Spanish</div>
+                      <div class="checks" aria-hidden="true">
+                        <span class="check"></span>
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <div class="locale-tile">
-                  <div class="locale-code">ru</div>
-                  <div class="checks" aria-hidden="true">
-                    <span class="check"></span>
-                    <span class="check"></span>
-                    <span class="check"></span>
+                  <div class="target-row">
+                    <div class="connector" aria-hidden="true"></div>
+                    <div class="locale-tile">
+                      <div class="locale-code">German</div>
+                      <div class="checks" aria-hidden="true">
+                        <span class="check"></span>
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <div class="locale-tile">
-                  <div class="locale-code">es-ES</div>
-                  <div class="checks" aria-hidden="true">
-                    <span class="check"></span>
-                    <span class="check"></span>
-                    <span class="check"></span>
+                  <div class="target-row">
+                    <div class="connector" aria-hidden="true"></div>
+                    <div class="locale-tile">
+                      <div class="locale-code">Chinese</div>
+                      <div class="checks" aria-hidden="true">
+                        <span class="check"></span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -162,7 +168,7 @@
               <div class="step-num" aria-hidden="true">1</div>
               <div class="step-body">
                 <h3>Connect</h3>
-                <p>Add your App Store Connect API key (Issuer ID, Key ID, .p8).</p>
+                <p>Add your App Store Connect API key.</p>
               </div>
             </li>
             <li class="step reveal">
@@ -187,11 +193,11 @@
         <div class="container">
           <h2 id="benefits-title">What you get</h2>
           <ul class="checklist">
-            <li>All locales at once: en-US, uk, ru, …</li>
+            <li>All locales at once: de, fr, es, …</li>
             <li>Per-locale edits without losing the template</li>
             <li>Previews &amp; diffs before publishing</li>
-            <li>Covers What’s New and Promotional Text</li>
-            <li>Simple integration with App Store Connect—no Xcode required</li>
+            <li>Covers What’s New and Promotional Text sections</li>
+            <li>Simple integration with App Store Connect — no Xcode required</li>
           </ul>
         </div>
       </section>
@@ -246,9 +252,9 @@
               </div>
 
               <div class="form-row">
-                <label for="company" class="form-label">Company name / your name</label>
+                <label for="company" class="form-label">Your name / Company name </label>
                 <div class="form-controls single">
-                  <input id="company" name="company_name" type="text" placeholder="Acme Inc. / Jane Appleseed" class="input">
+                  <input id="company" name="company_name" type="text" placeholder="Jane Appleseed / Acme Inc." class="input">
                 </div>
               </div>
 
@@ -277,7 +283,7 @@
 
     <footer class="site-footer" role="contentinfo">
       <div class="container footer-inner">
-        <p class="footnote">© 2025 Productive lab · Not affiliated with Apple. App Store Connect is a trademark of Apple Inc. · Contact: <a href="mailto:hello@productive-lab.com">hello@productive-lab.com</a></p>
+        <p class="footnote">© 2025 Productive lab · Not affiliated with Apple. App Store Connect is a trademark of Apple Inc. ·  <a href="mailto:guchenko.n@gmail.com">Contact Us</a></p>
         <a class="back-to-top" href="#hero">Back to top</a>
       </div>
     </footer>
