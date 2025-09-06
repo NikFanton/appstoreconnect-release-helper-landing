@@ -195,8 +195,25 @@
           <div class="waitlist-card reveal" role="region" aria-labelledby="waitlist-title">
             <h2 id="waitlist-title">Join the waitlist</h2>
             <p class="muted">Early access. Updates only.</p>
-            <!-- PASTE_EXISTING_FORM_HERE -->
-            <div class="form-slot" aria-hidden="true"></div>
+            <iframe name="hidden_iframe" id="hidden_iframe" title="Submission frame" style="display:none"></iframe>
+            <form id="wl" class="waitlist-form" action="https://script.google.com/macros/s/AKfycbxgwxw1QjLeDjEchi8pac4RdiWne3xXzkDUGMwf56LLXTIuP0B9yTo4-djwW_j8B8KB/exec" method="post" target="hidden_iframe">
+              <div class="form-row">
+                <label for="email" class="form-label">Email</label>
+                <div class="form-controls">
+                  <input id="email" name="email" type="email" inputmode="email" autocomplete="email" required placeholder="you@example.com" class="input">
+                  <button type="submit" class="btn btn-primary">Join</button>
+                </div>
+              </div>
+
+              <div class="hp" aria-hidden="true">
+                <label>Company <input name="company" type="text" tabindex="-1"></label>
+              </div>
+
+              <input type="hidden" id="source" name="source" value="">
+              <input type="hidden" name="t" value="nfaklnklfdnal_jko!39842mflksda_lk13^">
+
+              <p id="msg" class="form-msg" role="status" aria-live="polite"></p>
+            </form>
           </div>
         </div>
       </section>

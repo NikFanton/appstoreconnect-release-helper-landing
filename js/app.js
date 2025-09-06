@@ -53,3 +53,42 @@
   window.addEventListener('scroll', toggle, { passive: true });
 })();
 
+// Waitlist form handling (hidden iframe submit + basic validation)
+(function () {
+  const form = document.getElementById('wl');
+  if (!form) return;
+  const email = document.getElementById('email');
+  const source = document.getElementById('source');
+  const msg = document.getElementById('msg');
+  const iframe = document.getElementById('hidden_iframe');
+  let submitted = false;
+
+  // Set source meta
+  if (source) {
+    try {
+      source.value = (location.hostname || '') + (location.pathname || '');
+    } catch (_) {}
+  }
+
+  form.addEventListener('submit', (e) => {
+    // HTML5 validation first
+    if (!email || !email.value || email.value.indexOf('@') === -1) {
+      e.preventDefault();
+      if (email) email.focus();
+      alert('Please enter a valid email.');
+      return;
+    }
+    submitted = true;
+    if (msg) msg.textContent = 'Submitting…';
+  });
+
+  if (iframe) {
+    iframe.addEventListener('load', () => {
+      if (!submitted) return;
+      submitted = false;
+      if (msg) msg.textContent = "Thanks! You're in.";
+      try { form.reset(); } catch (_) {}
+      if (email) email.focus();
+    });
+  }
+})();

@@ -120,6 +120,16 @@ details.faq-item[open] > summary::after { content: "–"; }
 /* Waitlist */
 .waitlist-card { background: var(--bg); border: 1px solid #e5e7eb; border-radius: var(--radius-card); padding: 20px; box-shadow: var(--shadow-soft); max-width: 720px; margin: 0 auto; text-align: left; }
 .waitlist-card h2 { margin-bottom: 6px; }
+/* Form */
+.waitlist-form { margin-top: 10px; }
+.form-row { display: grid; gap: 8px; align-items: end; }
+@media (min-width: 560px) { .form-row { grid-template-columns: 140px 1fr; } }
+.form-label { font-weight: 600; }
+.form-controls { display: grid; grid-template-columns: 1fr auto; gap: 10px; }
+.input { width: 100%; padding: 12px 14px; border: 1px solid #e5e7eb; border-radius: 12px; background: #fff; color: var(--text); font: inherit; }
+.input:focus { outline: none; box-shadow: 0 0 0 3px var(--ring); border-color: rgba(10,132,255,0.4); }
+.input::placeholder { color: #9ca3af; }
+.form-msg { margin-top: 10px; color: var(--success); font-weight: 600; min-height: 1.25em; }
 
 /* Footer */
 .site-footer { border-top: 1px solid #e5e7eb; padding: 22px 0; color: var(--muted); }
@@ -140,4 +150,3 @@ a:focus-visible, button:focus-visible, [role="button"]:focus-visible { outline: 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
 }
-
