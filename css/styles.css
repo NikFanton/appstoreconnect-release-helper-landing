@@ -131,6 +131,7 @@ details.faq-item[open] > summary::after { content: "–"; }
 .input:focus { outline: none; box-shadow: 0 0 0 3px var(--ring); border-color: rgba(10,132,255,0.4); }
 .input::placeholder { color: #9ca3af; }
 .form-msg { margin-top: 10px; color: var(--success); font-weight: 600; min-height: 1.25em; }
+.form-msg:empty { display: none; }
 
 /* Submit button height alignment */
 .btn { min-height: 44px; }
