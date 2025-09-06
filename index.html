@@ -16,8 +16,49 @@
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="AppStoreConnect Assistant — Auto-populate ‘What’s New’ for App Store Connect">
     <meta name="twitter:description" content="One click to fill localized release notes across locales.">
+    <meta name="robots" content="index,follow">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:url" content="">
+    <link rel="canonical" href="" id="canonical-link">
+    <meta name="theme-color" content="#FFFFFF">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
     <link rel="stylesheet" href="css/styles.css">
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Productive lab"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "AppStoreConnect Assistant",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Web",
+      "description": "One click to fill localized release notes across locales.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Productive lab"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type": "Question", "name": "Can I edit translations?", "acceptedAnswer": {"@type": "Answer", "text": "Yes—every locale can be overridden before publishing."}},
+        {"@type": "Question", "name": "Do you store my Apple keys?", "acceptedAnswer": {"@type": "Answer", "text": "Keys are encrypted at rest; you can revoke them at any time in App Store Connect."}},
+        {"@type": "Question", "name": "Does it change my app binary or metadata?", "acceptedAnswer": {"@type": "Answer", "text": "Only the localized ‘What’s New’ field for the selected version."}},
+        {"@type": "Question", "name": "Which locales are supported?", "acceptedAnswer": {"@type": "Answer", "text": "All locales supported by App Store Connect; you choose which to publish."}},
+        {"@type": "Question", "name": "Can I use my own glossary?", "acceptedAnswer": {"@type": "Answer", "text": "Yes—add terms to keep brand names and feature names consistent."}}
+      ]
+    }
+    </script>
   </head>
   <body>
     <a class="skip-link" href="#hero">Skip to content</a>

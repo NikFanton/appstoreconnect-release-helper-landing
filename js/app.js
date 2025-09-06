@@ -53,6 +53,17 @@
   window.addEventListener('scroll', toggle, { passive: true });
 })();
 
+// Set canonical and og:url to current URL (avoids placeholder when deployed)
+(function () {
+  try {
+    const canonical = document.getElementById('canonical-link');
+    const url = location.origin + location.pathname;
+    if (canonical) canonical.setAttribute('href', url);
+    const og = document.querySelector('meta[property="og:url"]');
+    if (og) og.setAttribute('content', url);
+  } catch (_) {}
+})();
+
 // Waitlist form handling (hidden iframe submit + basic validation)
 (function () {
   const form = document.getElementById('wl');
