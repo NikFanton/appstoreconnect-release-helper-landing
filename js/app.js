@@ -58,9 +58,11 @@
   const form = document.getElementById('wl');
   if (!form) return;
   const email = document.getElementById('email');
+  const submitBtn = document.getElementById('wl-submit');
   const source = document.getElementById('source');
   const msg = document.getElementById('msg');
   const iframe = document.getElementById('hidden_iframe');
+  const success = document.getElementById('wl-success');
   let submitted = false;
 
   // Set source meta
@@ -80,15 +82,22 @@
     }
     submitted = true;
     if (msg) msg.textContent = 'Submitting…';
+    if (submitBtn) { submitBtn.disabled = true; submitBtn.setAttribute('aria-disabled', 'true'); submitBtn.textContent = 'Submitting…'; }
   });
 
   if (iframe) {
     iframe.addEventListener('load', () => {
       if (!submitted) return;
       submitted = false;
-      if (msg) msg.textContent = "Thanks! You're in.";
       try { form.reset(); } catch (_) {}
-      if (email) email.focus();
+      // Hide form; show success panel
+      form.setAttribute('hidden', '');
+      if (success) {
+        success.hidden = false;
+        const title = document.getElementById('wl-success-title');
+        if (title) title.setAttribute('tabindex', '-1');
+        if (title) title.focus({ preventScroll: true });
+      }
     });
   }
 })();

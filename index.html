@@ -199,21 +199,36 @@
             <form id="wl" class="waitlist-form" action="https://script.google.com/macros/s/AKfycbxgwxw1QjLeDjEchi8pac4RdiWne3xXzkDUGMwf56LLXTIuP0B9yTo4-djwW_j8B8KB/exec" method="post" target="hidden_iframe">
               <div class="form-row">
                 <label for="email" class="form-label">Email</label>
-                <div class="form-controls">
+                <div class="form-controls single">
                   <input id="email" name="email" type="email" inputmode="email" autocomplete="email" required placeholder="you@example.com" class="input">
-                  <button type="submit" class="btn btn-primary">Join</button>
                 </div>
               </div>
 
+              <div class="form-row">
+                <label for="company" class="form-label">Company name / your name</label>
+                <div class="form-controls single">
+                  <input id="company" name="company_name" type="text" placeholder="Acme Inc. / Jane Appleseed" class="input">
+                </div>
+              </div>
+
+              <!-- Honeypot field (hidden off-screen to deter bots) -->
               <div class="hp" aria-hidden="true">
-                <label>Company <input name="company" type="text" tabindex="-1"></label>
+                <label>Company <input name="company" type="text" tabindex="-1" autocomplete="off"></label>
               </div>
 
               <input type="hidden" id="source" name="source" value="">
               <input type="hidden" name="t" value="nfaklnklfdnal_jko!39842mflksda_lk13^">
 
+              <div class="form-actions">
+                <button type="submit" class="btn btn-primary" id="wl-submit">Join</button>
+              </div>
               <p id="msg" class="form-msg" role="status" aria-live="polite"></p>
             </form>
+
+            <div id="wl-success" class="form-success" hidden>
+              <h3 id="wl-success-title">Thanks—you’re in.</h3>
+              <p class="muted">We’ll email you about early access and product updates.</p>
+            </div>
           </div>
         </div>
       </section>

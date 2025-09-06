@@ -122,14 +122,26 @@ details.faq-item[open] > summary::after { content: "–"; }
 .waitlist-card h2 { margin-bottom: 6px; }
 /* Form */
 .waitlist-form { margin-top: 10px; }
-.form-row { display: grid; gap: 8px; align-items: end; }
-@media (min-width: 560px) { .form-row { grid-template-columns: 140px 1fr; } }
+.form-row { display: grid; gap: 10px; align-items: center; padding: 6px 0; }
+@media (min-width: 560px) { .form-row { grid-template-columns: 180px 1fr; } }
 .form-label { font-weight: 600; }
-.form-controls { display: grid; grid-template-columns: 1fr auto; gap: 10px; }
-.input { width: 100%; padding: 12px 14px; border: 1px solid #e5e7eb; border-radius: 12px; background: #fff; color: var(--text); font: inherit; }
+.form-controls { display: grid; grid-template-columns: 1fr auto; gap: 12px; }
+.form-controls.single { grid-template-columns: 1fr; }
+.input { width: 100%; padding: 12px 14px; border: 1px solid #e5e7eb; border-radius: 12px; background: #fff; color: var(--text); font: inherit; height: 44px; }
 .input:focus { outline: none; box-shadow: 0 0 0 3px var(--ring); border-color: rgba(10,132,255,0.4); }
 .input::placeholder { color: #9ca3af; }
 .form-msg { margin-top: 10px; color: var(--success); font-weight: 600; min-height: 1.25em; }
+
+/* Submit button height alignment */
+.btn { min-height: 44px; }
+
+/* Actions row */
+.form-actions { display: flex; justify-content: flex-start; padding: 6px 0 0; }
+@media (min-width: 560px) { .form-actions { justify-content: flex-end; } }
+
+/* Success message */
+.form-success { margin-top: 14px; }
+.form-success h3 { margin: 0 0 6px; font-size: 1.125rem; }
 
 /* Footer */
 .site-footer { border-top: 1px solid #e5e7eb; padding: 22px 0; color: var(--muted); }
@@ -138,6 +150,9 @@ details.faq-item[open] > summary::after { content: "–"; }
 .back-to-top { text-decoration: none; font-weight: 600; }
 .back-to-top:hover { opacity: 0.9; }
 .back-to-top:focus-visible { outline: none; box-shadow: 0 0 0 3px var(--ring); border-radius: 8px; }
+
+/* Honeypot (off-screen) */
+.hp { position: absolute; left: -5000px; top: auto; width: 1px; height: 1px; overflow: hidden; }
 
 /* Reveal on scroll */
 .reveal { opacity: 0; transform: translateY(8px); will-change: opacity, transform; }
