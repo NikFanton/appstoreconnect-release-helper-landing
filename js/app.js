@@ -53,6 +53,27 @@
   window.addEventListener('scroll', toggle, { passive: true });
 })();
 
+// Hide header CTA while hero section is in view
+(function () {
+  const cta = document.getElementById('header-cta');
+  const hero = document.getElementById('hero');
+  if (!cta || !hero || !('IntersectionObserver' in window)) return;
+  const io = new IntersectionObserver((entries) => {
+    const entry = entries[0];
+    if (!entry) return;
+    if (entry.isIntersecting) {
+      cta.classList.add('is-hidden');
+      cta.setAttribute('aria-hidden', 'true');
+      cta.setAttribute('tabindex', '-1');
+    } else {
+      cta.classList.remove('is-hidden');
+      cta.removeAttribute('aria-hidden');
+      cta.removeAttribute('tabindex');
+    }
+  }, { root: null, threshold: 0.35 });
+  io.observe(hero);
+})();
+
 // Set canonical and og:url to current URL (avoids placeholder when deployed)
 (function () {
   try {

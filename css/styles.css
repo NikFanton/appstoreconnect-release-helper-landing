@@ -101,13 +101,15 @@ p { margin: 0 0 12px; color: var(--text); }
 .locale-tile { transition: opacity 220ms ease, transform 220ms ease; }
 .locale-tile.swap { transform: translateY(-1px); opacity: 0.96; }
 
-/* Mobile fallback for flow */
+/* Small screens: keep connectors, just tighten spacing */
 @media (max-width: 679px) {
-  .flow-canvas { height: auto; padding-bottom: 8px; }
-  .source-wrap { position: static; transform: none; display: grid; place-items: center; margin-bottom: 8px; }
-  .targets-row { position: static; transform: none; flex-wrap: wrap; justify-content: center; }
-  .beam { display: none; }
+  .flow-canvas { height: 220px; padding-bottom: 0; }
+  .targets-row { gap: 8px; }
 }
+
+/* Header CTA visibility toggle when hero present */
+.header-cta { transition: opacity 200ms ease, transform 200ms ease, visibility 200ms; }
+.header-cta.is-hidden { opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(-4px); }
 
 /* Features */
 .feature-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
