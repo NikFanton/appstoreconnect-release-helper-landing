@@ -64,11 +64,48 @@
   } catch (_) {}
 })();
 
+// Position beams from English (source) to each target center
+(function () {
+  const canvas = document.querySelector('.flow-canvas');
+  const source = document.querySelector('.source-wrap .locale-tile.source');
+  const targets = Array.from(document.querySelectorAll('.targets-row .locale-tile'));
+  const beams = Array.from(document.querySelectorAll('.flow-canvas .beam'));
+  if (!canvas || !source || beams.length !== 3 || targets.length !== 3) return;
+
+  const layout = () => {
+    const c = canvas.getBoundingClientRect();
+    const s = source.getBoundingClientRect();
+    const start = {
+      x: s.left - c.left + s.width / 2,
+      y: s.bottom - c.top
+    };
+    beams.forEach((beam, idx) => {
+      const t = targets[idx].getBoundingClientRect();
+      const end = {
+        x: t.left - c.left + t.width / 2, // target top center X
+        y: t.top - c.top // target top Y
+      };
+      const dx = end.x - start.x;
+      const dy = end.y - start.y;
+      const len = Math.sqrt(dx*dx + dy*dy);
+      const ang = Math.atan2(dy, dx) * 180 / Math.PI;
+      beam.style.left = `${start.x}px`;
+      beam.style.top = `${start.y}px`;
+      beam.style.width = `${len}px`;
+      beam.style.transform = `rotate(${ang}deg)`;
+    });
+  };
+  layout();
+  window.addEventListener('resize', layout);
+  // Expose for other modules
+  window.__layoutBeams = layout;
+})();
+
 // Rotate example locales when slider wraps (with emoji flags)
 (function () {
-  const codeEls = document.querySelectorAll('.targets-col .locale-tile .locale-code');
-  const flagEls = document.querySelectorAll('.targets-col .locale-tile .flag');
-  const connectors = document.querySelectorAll('.connector');
+  const codeEls = document.querySelectorAll('.targets-row .locale-tile .locale-code');
+  const flagEls = document.querySelectorAll('.targets-row .locale-tile .flag');
+  const connectors = document.querySelectorAll('.beam');
   if (!codeEls.length || !flagEls.length || !connectors.length) return;
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const sets = [
@@ -88,10 +125,13 @@
       if (tile) setTimeout(() => tile.classList.remove('swap'), 180);
     });
     i++;
+    if (typeof window.__layoutBeams === 'function') {
+      requestAnimationFrame(window.__layoutBeams);
+    }
   };
   apply();
   if (reduce) return; // respect reduced motion
-  const signal = document.querySelector('.connector.mid') || connectors[0];
+  const signal = document.querySelector('.beam.mid.progress') || connectors[0];
   signal.addEventListener('animationiteration', apply);
 })();
 
