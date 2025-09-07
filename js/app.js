@@ -132,7 +132,11 @@
   const sets = [
     [ {name: 'Spanish', flag: '🇪🇸'}, {name: 'German', flag: '🇩🇪'}, {name: 'Chinese', flag: '🇨🇳'} ],
     [ {name: 'Ukrainian', flag: '🇺🇦'}, {name: 'French', flag: '🇫🇷'}, {name: 'Japanese', flag: '🇯🇵'} ],
-    [ {name: 'Dutch', flag: '🇳🇱'}, {name: 'Italian', flag: '🇮🇹'}, {name: 'Korean', flag: '🇰🇷'} ]
+    [ {name: 'Dutch', flag: '🇳🇱'}, {name: 'Italian', flag: '🇮🇹'}, {name: 'Korean', flag: '🇰🇷'} ],
+    [ {name: 'Polish', flag: '🇵🇱'}, {name: 'Turkish', flag: '🇹🇷'}, {name: 'Thai', flag: '🇹🇭'} ],
+    [ {name: 'Hindi', flag: '🇮🇳'}, {name: 'Arabic', flag: '🇦🇪'}, {name: 'Hebrew', flag: '🇮🇱'} ],
+    [ {name: 'Swedish', flag: '🇸🇪'}, {name: 'Greek', flag: '🇬🇷'}, {name: 'Czech', flag: '🇨🇿'} ],
+    [ {name: 'Danish', flag: '🇩🇰'}, {name: 'Finnish', flag: '🇫🇮'}, {name: 'Norwegian', flag: '🇳🇴'} ]
   ];
   let i = 0;
   const apply = () => {

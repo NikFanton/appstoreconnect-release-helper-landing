@@ -94,7 +94,7 @@ p { margin: 0 0 12px; color: var(--text); }
 .beam.left {}
 .beam.mid {}
 .beam.right {}
-.beam.progress::after { animation: knobTravel 4s linear infinite; }
+.beam.progress::after { animation: knobTravel 2.35s linear infinite; }
 @keyframes knobTravel { 0% { left: 0%; } 100% { left: 100%; } }
 @media (prefers-reduced-motion: reduce) { .beam.progress::after { animation: none; } }
 .locale-tile.source { border-color: rgba(10,132,255,0.3); background: #fff; }
