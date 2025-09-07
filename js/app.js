@@ -125,18 +125,18 @@
 // Rotate example locales when slider wraps (with emoji flags)
 (function () {
   const codeEls = document.querySelectorAll('.targets-row .locale-tile .locale-code');
-  const badgeEls = document.querySelectorAll('.targets-row .locale-tile .lang-badge');
+  const badgeEls = document.querySelectorAll('.targets-row .locale-tile .flag');
   const connectors = document.querySelectorAll('.beam');
   if (!codeEls.length || !badgeEls.length || !connectors.length) return;
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const sets = [
-    [ {name: 'Spanish', code: 'ES'}, {name: 'German', code: 'DE'}, {name: 'Chinese', code: 'ZH'} ],
-    [ {name: 'Ukrainian', code: 'UK'}, {name: 'French', code: 'FR'}, {name: 'Japanese', code: 'JA'} ],
-    [ {name: 'Dutch', code: 'NL'}, {name: 'Italian', code: 'IT'}, {name: 'Korean', code: 'KO'} ],
-    [ {name: 'Polish', code: 'PL'}, {name: 'Turkish', code: 'TR'}, {name: 'Thai', code: 'TH'} ],
-    [ {name: 'Hindi', code: 'HI'}, {name: 'Arabic', code: 'AR'}, {name: 'Hebrew', code: 'HE'} ],
-    [ {name: 'Swedish', code: 'SV'}, {name: 'Greek', code: 'EL'}, {name: 'Czech', code: 'CS'} ],
-    [ {name: 'Danish', code: 'DA'}, {name: 'Finnish', code: 'FI'}, {name: 'Norwegian', code: 'NO'} ]
+    [ {name: 'Spanish', flag: '🇪🇸'}, {name: 'German', flag: '🇩🇪'}, {name: 'Chinese', flag: '🇨🇳'} ],
+    [ {name: 'Ukrainian', flag: '🇺🇦'}, {name: 'French', flag: '🇫🇷'}, {name: 'Japanese', flag: '🇯🇵'} ],
+    [ {name: 'Dutch', flag: '🇳🇱'}, {name: 'Italian', flag: '🇮🇹'}, {name: 'Korean', flag: '🇰🇷'} ],
+    [ {name: 'Polish', flag: '🇵🇱'}, {name: 'Turkish', flag: '🇹🇷'}, {name: 'Thai', flag: '🇹🇭'} ],
+    [ {name: 'Hindi', flag: '🇮🇳'}, {name: 'Arabic', flag: '🇦🇪'}, {name: 'Hebrew', flag: '🇮🇱'} ],
+    [ {name: 'Swedish', flag: '🇸🇪'}, {name: 'Greek', flag: '🇬🇷'}, {name: 'Czech', flag: '🇨🇿'} ],
+    [ {name: 'Danish', flag: '🇩🇰'}, {name: 'Finnish', flag: '🇫🇮'}, {name: 'Norwegian', flag: '🇳🇴'} ]
   ];
   let i = 0;
   const apply = () => {
@@ -146,7 +146,7 @@
       const badge = badgeEls[idx];
       if (tile) tile.classList.add('swap');
       code.textContent = list[idx]?.name || '';
-      if (badge) badge.textContent = list[idx]?.code || '';
+      if (badge) badge.textContent = list[idx]?.flag || '';
       if (tile) setTimeout(() => tile.classList.remove('swap'), 180);
     });
     i++;
